@@ -1,0 +1,20 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore vendor directory (Laravel dependencies)
+backend/vendor/
+
+# Ignore build directory (React build output)
+frontend/build/
+
+# # Ignore .env files (containing sensitive data)
+# frontend/.env
+# backend/.env
+
+# Ignore Docker files related to local development
+docker-compose.override.yml
+*.log
+
+# Ignore any other environment or system-specific files
+.DS_Store
+Thumbs.db

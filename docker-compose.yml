@@ -1,0 +1,42 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/var/www
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=task_manager
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=1nl
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173" # Update to Vite's default port
+    environment:
+      - VITE_API_URL=http://localhost:8000/api # Update your API endpoint
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1nl
+      POSTGRES_DB: task_manager
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
