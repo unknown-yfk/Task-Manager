@@ -31,7 +31,7 @@ const handleRegistration = async (formData: any, setError: React.Dispatch<React.
       console.log('User registered successfully:', response.data.user);
 
       setTimeout(() => {
-        window.location.href = '/dashboard'; // Redirect to dashboard
+        window.location.href = '/login'; // Redirect to dashboard
       }, 2000);
     }
   } catch (err) {
